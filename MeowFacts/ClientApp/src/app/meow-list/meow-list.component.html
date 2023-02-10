@@ -1,0 +1,38 @@
+<div class="surface-section px-4 py-5 md:px-6 lg:px-8">
+    <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+        <li>
+            <a class="text-500 no-underline line-height-3 cursor-pointer">Application</a>
+        </li>
+        <li class="px-2">
+            <i class="pi pi-angle-right text-500 line-height-3"></i>
+        </li>
+        <li>
+            <span class="text-900 line-height-3">Meow Facts</span>
+        </li>
+    </ul>
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+        <div>
+            <div class="font-medium text-3xl text-900">Meow facts</div>
+        </div>
+    </div>
+    <div>
+        <p-virtualScroller [value]="virtualCatFacts" scrollHeight="450px" [itemSize]="210" [lazy]="true"
+            (onLazyLoad)="loadCatsLazy($event)">
+            <ng-template pTemplate="header"> Meow facts </ng-template>
+            <ng-template let-fact pTemplate="item">
+                <div class="product-item">
+                    <div class="product-list-detail">
+                        <div class="cat-info">
+                            <h5 class="mb-2">{{ fact.fact }}</h5>
+                        </div>
+                        <i class="pi pi-tag product-category-icon"></i>
+                        <span class="product-category">Fact No {{ fact.number }}</span>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template let-product pTemplate="loadingItem">
+                <p-skeleton height="185px" [style]="{ 'margin-top': '10px' }"></p-skeleton>
+            </ng-template>
+        </p-virtualScroller>
+    </div>
+</div>
