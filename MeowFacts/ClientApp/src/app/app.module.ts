@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +20,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { SkeletonModule } from 'primeng/skeleton';
+import { OverlayModule } from 'primeng/overlay';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -29,7 +34,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     CounterComponent,
     FetchDataComponent,
     LoginComponent,
-    MeowListComponent
+    MeowListComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,6 +47,10 @@ import { SkeletonModule } from 'primeng/skeleton';
     StyleClassModule,
     VirtualScrollerModule,
     SkeletonModule,
+    OverlayModule,
+    OverlayPanelModule,
+    BrowserAnimationsModule,
+    ProgressSpinnerModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/meow', pathMatch: 'full' },
       { path: 'meow', component: MeowListComponent, canActivate: [ LoggedInGuard ] },

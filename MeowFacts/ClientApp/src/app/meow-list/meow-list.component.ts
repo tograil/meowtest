@@ -22,13 +22,23 @@ export class MeowListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.virtualCatFacts = Array.from({ length: 11 });
-    this.meowService.getNextFacts(11).subscribe(x => {
-      this.virtualCatFacts[x.index] = {
-        fact: x.fact,
-        number: x.index + 1
-      };
-    });
+    if (this.meowService.factsList.length > 0) {
+        this.virtualCatFacts =  this.meowService.factsList.map((fact, index) => {
+          return {
+            fact: fact,
+            number: index + 1
+          }}); 
+      }
+      else {
+        this.virtualCatFacts = Array.from({ length: 11 });
+        this.meowService.getNextFacts(11).subscribe(x => {
+          this.virtualCatFacts[x.index] = {
+            fact: x.fact,
+            number: x.index + 1
+          };
+        });
+      }
+    
     this.sortOptions = [
       { label: 'Cheapest First', value: 'price' },
       { label: 'Expensive First', value: '!price' },

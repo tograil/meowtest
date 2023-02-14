@@ -40,7 +40,7 @@ export class MeowService {
 
         return f;
       }),
-     retry(25 + this.loadedFacts.length)));
+     retry(7 + this.loadedFacts.length)));
   }
 
   getNextFacts(numberOfFacts: number) : Observable<FactWithNumber> {
